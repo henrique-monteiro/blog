@@ -18,10 +18,11 @@ public class DummyData {
 	@Autowired
     PostRepository postRepository;	//injeção do repository
 
-    @PostConstruct	//executa conforme executa a aplicação
+    //@PostConstruct	//executa conforme executa a aplicação
     public void savePosts(){
 
         List<Post> postList = new ArrayList<>();
+        
         Post post1 = new Post();
         post1.setAutor("Henrique Monteiro");
         post1.setData(LocalDate.now());

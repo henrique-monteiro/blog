@@ -9,7 +9,7 @@ import com.spring.blog.model.Post;
 import com.spring.blog.repository.PostRepository;
 
 @Service //gerenciado pelo Spring
-public class Blog {
+public class BlogService {
 	
 	@Autowired
     PostRepository postRepository;
