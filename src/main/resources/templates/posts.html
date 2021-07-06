@@ -17,17 +17,19 @@
     <section>
 	    <div class="container"  style="width: 60%; padding-bottom: 30px;">
 	        <nav aria-label="breadcrumb">
-	            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+	            <ol class="breadcrumb" style="background-color: rgb(255, 255, 255); padding-left: 0px;">
 	                <li class="breadcrumb-item active" aria-current="page">Posts</li>
 	            </ol>
 	        </nav>
-	        <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
+	        <div class="card shadow-sm bg-white rounded" style="margin-top: 30px;" th:each="post : ${posts}">
 	            <div class="card-body">
 					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
                     <span th:text="${post.autor}"></span>
                     <span th:text="${post.data}"></span>
                 </p>
-                <a href="#"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
+<!--                 <a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: rgb(0,0,255); padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a> -->
+				<a th:href="@{/posts/{id}(id=${post.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
+                
                 <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)} "></span></p>
                 
 	            </div>
