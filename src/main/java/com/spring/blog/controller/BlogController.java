@@ -3,6 +3,8 @@ package com.spring.blog.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -43,7 +45,11 @@ public class BlogController {
     }
 	
 	@RequestMapping(value="/newpost", method=RequestMethod.POST)
-    public String savePost(Post post, BindingResult result, RedirectAttributes attributes){
+/*
+	@Valid ao receber o post verifica-se se ele obedece a todas as anotações do modelo
+	no atributo result é verificado se teve algum erro, ou seja, se teve algum valor em branco ou nulo
+ */	
+    public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
             return "redirect:/newpost";

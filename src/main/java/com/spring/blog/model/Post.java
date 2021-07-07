@@ -1,16 +1,12 @@
 package com.spring.blog.model;
 
-import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name="post")
@@ -19,16 +15,16 @@ public class Post {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+	@NotBlank
     private String titulo;
 
-    @NotNull
+	@NotBlank
     private String autor;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     private LocalDate data;
 
-    @NotNull
+    @NotBlank
     @Lob //banco aceitar longos textos
     private String texto;
 
